@@ -9,8 +9,8 @@ export const Hero = () => {
           src={HeroImg}
           width={1943}
           height={1457}
-          alt=""
-          priority={true}
+          alt="Hero Image"
+          priority
           className="w-full h-full object-cover object-top brightness-90"
         />
       </div>
@@ -19,8 +19,8 @@ export const Hero = () => {
           src={MobileHero}
           width={1944}
           height={2722}
-          alt=""
-          priority={true}
+          alt="Hero Image Mobile"
+          priority
           className="w-full h-full object-cover object-top brightness-90"
         />
       </div>
