@@ -24,7 +24,7 @@ const productData:Product[] = [
     {
         id: 2,
         image: '/images/img13.jpg',
-        title: 'Womens Runner Trainers in  Grey',
+        title: 'Womens Runner Sneaker in Multicolored',
         price: '$400',
         width: 564,
         height: 564

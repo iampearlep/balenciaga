@@ -6,36 +6,36 @@ import { CgArrowLongRight } from "react-icons/cg";
 const productData:Product[] = [
     {
         id: 0,
-        image: '/images/pi1.jpg',
+        image: '/images/img2.jpg',
         title: 'Elliana Front Pleated Blouse',
         price: '$300',
-        width: 1778,
-        height: 1833
+        width: 1100,
+        height: 1100
 
     },
     {
         id: 1,
-        image: '/images/pi3.jpg',
+        image: '/images/img1.jpg',
         title: 'Omi Halter Tank Top',
         price: '$90',
-        width: 1555,
-        height: 2287
+        width: 1100,
+        height: 1100
     },
     {
         id: 2,
-        image: '/images/pi2.jpg',
+        image: '/images/img4.jpg',
         title: 'Daylin Button Up Shirt',
         price: '$400',
-        width: 1707,
-        height: 1688
+        width: 1100,
+        height: 1100
     },
     {
         id: 3,
-        image: '/images/pi4.jpg',
+        image: '/images/img5.jpg',
         title: 'Athenns Tee',
         price: '$100',
-        width: 1617,
-        height:1728
+        width: 1100,
+        height: 1100
     },
 ]
 
