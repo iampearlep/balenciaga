@@ -7,7 +7,7 @@ const productData:Product[] = [
     {
         id: 0,
         image: '/images/img2.jpg',
-        title: 'Elliana Front Pleated Blouse',
+        title: 'Open Back Top',
         price: '$300',
         width: 1100,
         height: 1100
@@ -16,7 +16,7 @@ const productData:Product[] = [
     {
         id: 1,
         image: '/images/img1.jpg',
-        title: 'Omi Halter Tank Top',
+        title: 'Twisted Top',
         price: '$90',
         width: 1100,
         height: 1100
@@ -24,7 +24,7 @@ const productData:Product[] = [
     {
         id: 2,
         image: '/images/img4.jpg',
-        title: 'Daylin Button Up Shirt',
+        title: 'Balenciaga Cropped Turtleneck',
         price: '$400',
         width: 1100,
         height: 1100
@@ -32,7 +32,7 @@ const productData:Product[] = [
     {
         id: 3,
         image: '/images/img5.jpg',
-        title: 'Athenns Tee',
+        title: 'V-Neck BodyTop',
         price: '$100',
         width: 1100,
         height: 1100

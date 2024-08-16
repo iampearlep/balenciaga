@@ -1,14 +1,14 @@
 import Image from "next/image";
-import HeroImg from "@/public/images/hero-img.webp";
-import MobileHero from "@/public/images/hero-mobile.webp";
+import HeroImg from "@/public/images/hero-img.jpg";
+import MobileHero from "@/public/images/hero-mobile.jpg";
 export const Hero = () => {
   return (
     <div className="flex relative h-screen overflow-hidden">
       <div className="hidden md:flex w-full">
         <Image
           src={HeroImg}
-          width={1943}
-          height={1457}
+          width={1000}
+          height={746}
           alt="Hero Image"
           priority
           className="w-full h-full object-cover object-top brightness-90"
@@ -17,15 +17,15 @@ export const Hero = () => {
       <div className="flex md:hidden">
         <Image
           src={MobileHero}
-          width={1944}
-          height={2722}
+          width={1000}
+          height={1125}
           alt="Hero Image Mobile"
           priority
           className="w-full h-full object-cover object-top brightness-90"
         />
       </div>
       <div className="">
-        <div className="absolute top-0 inset-0 pt-[6.5rem] md:pt-24 px-5 md:px-[3.75rem] max-w-xl">
+        <div className="absolute top-0 inset-0 pt-[3.5rem] md:pt-24 px-5 md:px-[3.75rem] max-w-xl">
           <h1 className="text-[2.8rem] leading-none w-2/6 md:w-full md:text-7xl text-white uppercase">
             New collection
           </h1>
