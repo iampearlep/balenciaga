@@ -32,8 +32,9 @@ export const NewArrival = () => {
     ]
 
   return (
-    <div className=" w-11/12 mx-auto my-24">
-        <div className="flex flex-col-reverse md:flex-row gap-x-5">
+   <div className="bg-white py-28">
+     <div className=" w-11/12 mx-auto">
+        <div className="flex flex-col-reverse md:flex-row gap-x-7">
             <div className="md:w-8/12 flex flex-col relative">
             <h2  className='text-4xl md:text-7xl pb-6 uppercase'>New Arrival</h2>
             {
@@ -52,5 +53,6 @@ export const NewArrival = () => {
             </div>
         </div>
     </div>
+   </div>
   )
 }

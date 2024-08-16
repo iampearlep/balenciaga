@@ -1,3 +1,4 @@
+import { Classic } from "@/components/Classic";
 import { Hero } from "@/components/Hero";
 import { NewArrival } from "@/components/NewArrival";
 import { NewCollection } from "@/components/NewCollection";
@@ -12,6 +13,7 @@ export default function Home() {
     <NewCollection />
     <Sfw />
     <NewArrival />
+    <Classic />
    </main>
   );
 }
