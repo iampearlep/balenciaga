@@ -3,7 +3,9 @@ import { Hero } from "@/components/Hero";
 import { NewArrival } from "@/components/NewArrival";
 import { NewCollection } from "@/components/NewCollection";
 import { Rtw } from "@/components/Rtw";
+import { Sales } from "@/components/Sales";
 import { Sfw } from "@/components/Sfw";
+import { YG } from "@/components/YG";
 
 export default function Home() {
   return (
@@ -14,6 +16,8 @@ export default function Home() {
     <Sfw />
     <NewArrival />
     <Classic />
+    <Sales />
+    <YG />
    </main>
   );
 }
