@@ -32,7 +32,7 @@ export const YG = () => {
           />
         </div>
         <div className="flex flex-col md:w-8/12">
-          <div className="flex h-[45rem] justify-between gap-x-5 md:gap-x-0">
+          <div className="flex h-[39rem] justify-between gap-x-5 md:gap-x-0">
             <div className="flex w-[50%] md:w-[40%] items-end">
           <Image
             src={Nimg2}
