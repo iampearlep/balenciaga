@@ -1,11 +1,21 @@
 import Product from "@/models/product";
 import connectMongoDB from "@/utils/mongodb";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
+export async function POST(req: NextRequest) {
+  try {
+    const product = await req.json();
+    console.log("Received data:", product);
 
-export default async function POST(req: Request){
-    const {name, description, price, category, image, size, } =await req.json();
-        await connectMongoDB()
-        await Product.create({name: name, description: description, price:price, category:category, image:image, size:size});
-        return NextResponse.json({ message: "Product added successfully" }, {status: 201})
+    await connectMongoDB();
+    console.log("Connected to MongoDB");
+
+    const newProduct = await Product.create(product);
+    console.log("Product created:", newProduct);
+
+    return NextResponse.json({ message: "Product added successfully", product: newProduct }, { status: 201 });
+  } catch (error) {
+    console.error("Error creating product:", error);
+    return NextResponse.json({ error: "Failed to create product"}, { status: 500 });
+  }
 }

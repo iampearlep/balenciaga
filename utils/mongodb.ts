@@ -1,17 +1,13 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-
-const connectMongoDB = async() => {
-    try {
-      const mongoUri = process.env.MONGODB_URI
-      if(!mongoUri) throw new Error('MONGODB URI not found in .env.local')
-  
-      const conn = await mongoose.connect(mongoUri)
-      console.log(`MongoDB connected: ${conn.connection.host}`)
-    } catch (error) {
-      console.log('Error connecting to MongoDB', error)
-    }
+const connectMongoDB = async () => {
+  try {
+    await mongoose.connect(`${process.env.MONGODB_URI}`);
+    console.log("Connected to MongoDB.");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error);
+    throw error;
   }
-  
-  export default connectMongoDB
-  
+};
+
+export default connectMongoDB;
