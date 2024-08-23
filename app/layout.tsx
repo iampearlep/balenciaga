@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { customFont } from "./fonts";
 import "./globals.css";
 import Navbar from "@/components/layouts/Navbar";
+import { Footer } from "@/components/layouts/Footer";
 
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({
       <body className={customFont.className}>
         <Navbar />
       <main>{children}</main>
+      <Footer />
         </body>
     </html>
   );

@@ -1,0 +1,101 @@
+import Link from "next/link";
+
+export const Footer = () => {
+  return (
+    <div className="bg-[#f0f0f0] border-black border-t">
+        <div className="grid grid-cols-1 md:grid-cols-6 w-11/12 mx-auto border-black border-b">
+            <div className="flex flex-col gap-y-4 py-4 md:py-8">
+                <h5 className="uppercase text-base font-medium">Newsletter</h5>
+                <Link className="text-sm underline" href='/'>Subscribe to our newsletter</Link>
+            </div>
+            <div className="flex flex-col gap-y-4 md:border-l border-black md:px-4 py-4 md:py-8">
+                <h5 className="uppercase text-base font-medium">Client services</h5>
+                <div className="text-sm flex flex-col gap-y-3">
+                <Link href="/" className="cursor-pointer">
+                FAQ
+            </Link>
+            <Link href="/" className="cursor-pointer">
+             Track Order
+             </Link>
+             <Link href="/" className="cursor-pointer">
+             Exchanges and returns
+             </Link>
+             <Link href="/" className="cursor-pointer">
+             Delivery
+             </Link>
+             <Link href="/" className="cursor-pointer">
+             Payment
+             </Link>
+                </div>
+            </div>
+            <div className="flex flex-col gap-y-4 md:border-l border-black md:px-4 py-4 md:py-8">
+                <h5 className="uppercase text-base font-medium">The Company</h5>
+               <div className="text-sm flex flex-col gap-y-3">
+               <Link href="/" className="cursor-pointer">
+             Careers
+             </Link>
+             <Link href="/" className="cursor-pointer">
+              Careers - Design
+              </Link>
+              <Link href="/" className="cursor-pointer">
+              Legal
+              </Link>
+              <Link href="/" className="cursor-pointer">
+              Privacy Policy and cookies
+              </Link>
+              <Link href="/" className="cursor-pointer">
+              World Food Programme
+              </Link>
+               </div>
+               
+            </div>
+            <div className="flex flex-col gap-y-4 md:border-l border-black md:px-4 py-4 md:py-8">
+                <h5 className="uppercase text-base font-medium">Connect</h5>
+                <div className="text-sm flex flex-col gap-y-3">
+                <Link href="/" className="cursor-pointer">
+             Facebook
+             </Link>
+             <Link href="/" className="cursor-pointer">
+              Instagram
+              </Link>
+              <Link href="/" className="cursor-pointer">
+              Tiktok
+              </Link>
+              <Link href="/" className="cursor-pointer">
+              Spotify
+              </Link>
+                </div>
+            </div>
+            <div className="flex flex-col gap-y-4 md:border-l border-black md:px-4 py-4 md:py-8">
+                <h5 className="uppercase text-basefont-medium">Botiques</h5>
+               <div className="text-sm flex flex-col gap-y-3">
+               <Link href="/" className="cursor-pointer">
+             Store Appointment
+             </Link>
+             <Link href="/" className="cursor-pointer">
+              Find a store nearby
+              </Link>
+              <Link href="/" className="cursor-pointer">
+              Country / Region: Nigeria
+              </Link>
+              <Link href="/" className="cursor-pointer">
+              Language: English
+              </Link>
+               </div>
+            </div>
+            <div className="flex flex-col gap-y-4 md:border-l border-black md:px-4 py-4 md:py-8">
+                <h5  className="uppercase text-base font-medium">Contact Us</h5>
+            <div className="text-sm flex flex-col gap-y-3">
+            <p>Our Clients advisors are available <span>Mon-Sat 9:30am - 7pm</span></p>
+                <p>WhatsApp <span className="underline">+234 81 74 56 39 01</span></p>
+                <p>Call us <span className="underline"> +234 81 74 56 39 01</span></p>
+                <p>Email us</p>
+            </div>
+            </div>
+        </div>
+        <div className="py-4 mx-auto text-center text-sm">
+            <p>&copy; 2024 Balenciaga</p>
+        </div>
+    </div>
+  )
+}
