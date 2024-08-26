@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.51.21",
+    "@tanstack/react-query-devtools": "^5.52.1",
     "mongoose": "^8.5.3",
     "next": "14.2.5",
     "react": "^18",
