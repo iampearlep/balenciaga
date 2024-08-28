@@ -3,7 +3,7 @@ import { customFont } from "./fonts";
 import "./globals.css";
 import Navbar from "@/components/layouts/Navbar";
 import { Footer } from "@/components/layouts/Footer";
-
+import Provider from "@/utils/provider";
 
 export const metadata: Metadata = {
   title: "Balenciaga",
@@ -18,10 +18,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={customFont.className}>
-        <Navbar />
-      <main>{children}</main>
-      <Footer />
-        </body>
+        <Provider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </Provider>
+      </body>
     </html>
   );
 }

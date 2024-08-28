@@ -13,21 +13,30 @@ export async function POST(req: NextRequest) {
     const newProduct = await Product.create(product);
     console.log("Product created:", newProduct);
 
-    return NextResponse.json({ message: "Product added successfully", product: newProduct }, { status: 201 });
+    return NextResponse.json(
+      { message: "Product added successfully", product: newProduct },
+      { status: 201 }
+    );
   } catch (error) {
     console.error("Error creating product:", error);
-    return NextResponse.json({ error: "Failed to create product"}, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to create product" },
+      { status: 500 }
+    );
   }
 }
 
-export async function GET(){
-    try {
-        await connectMongoDB()
-        const products = await Product.find()
-        console.log("Fetched products:", products);
-        return NextResponse.json({products});
-    } catch (error) {
-        console.error("Error fetching products:", error);
-    return NextResponse.json({ error: "Failed to fetch products"}, { status: 500 });
-    }
+export async function GET() {
+  try {
+    await connectMongoDB();
+    const products = await Product.find();
+    console.log("Fetched products:", products);
+    return NextResponse.json(products);
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return NextResponse.json(
+      { error: "Failed to fetch products" },
+      { status: 500 }
+    );
+  }
 }
