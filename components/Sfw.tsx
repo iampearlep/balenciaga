@@ -1,18 +1,11 @@
 "use client";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { fetchProducts } from "@/app/api/products";
 import Image from "next/image";
 import { CgArrowLongRight } from "react-icons/cg";
 
-const fetchProducts = async () => {
-  try {
-    const response = await axios.get("/api/products");
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+
 
 export const Sfw = () => {
   const {

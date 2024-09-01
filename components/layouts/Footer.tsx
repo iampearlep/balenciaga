@@ -3,7 +3,7 @@ import Link from "next/link";
 export const Footer = () => {
   return (
     <div className="bg-[#f0f0f0] border-black border-t">
-        <div className="grid grid-cols-1 md:grid-cols-6 w-11/12 mx-auto border-black border-b">
+        <div className="grid grid-cols-1 md:grid-cols-6 w-11/12 mx-auto ">
             <div className="flex flex-col gap-y-4 py-4 md:py-8">
                 <h5 className="uppercase text-base font-medium">Newsletter</h5>
                 <Link className="text-sm underline" href='/'>Subscribe to our newsletter</Link>
@@ -93,7 +93,7 @@ export const Footer = () => {
             </div>
             </div>
         </div>
-        <div className="py-4 mx-auto text-center text-sm">
+        <div className="py-4 mx-auto text-center text-sm border-black border-t">
             <p>&copy; 2024 Balenciaga</p>
         </div>
     </div>

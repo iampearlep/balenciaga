@@ -3,18 +3,9 @@ import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import Image from "next/image";
 import { CgArrowLongRight } from "react-icons/cg";
-import axios from "axios";
+import { fetchProducts } from "@/app/api/products";
 
 
-
-const fetchProducts = async () => {
-  try {
-    const response = await axios.get("/api/products");
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
 
 export const Rtw = () => {
   const {
