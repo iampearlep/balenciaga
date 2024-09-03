@@ -17,7 +17,7 @@ const Navbar = () => {
         <div className="flex flex-row justify-between w-7/12">
           <div className="flex flex-row justify-between items-center font-medium text-[0.9rem] gap-x-6">
             <Link href="/">Men</Link>
-            <Link href="/">Women</Link>
+            <Link href="/women">Women</Link>
             <Link href="/">Kids</Link>
             <Link href="/">Explore</Link>
             <Link href="/">New</Link>

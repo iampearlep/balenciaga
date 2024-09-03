@@ -6,7 +6,7 @@ import { CgArrowLongRight } from "react-icons/cg";
 
 export const YG = () => {
   return (
-    <div className="py-14 w-11/12 mx-auto">
+    <div className="pt-14 pb-28 w-11/12 mx-auto">
         <div className="flex flex-col gap-y-14">
         <div className="flex flex-row justify-between items-center">
             <h2 className="text-4xl md:text-6xl uppercase max-w-3xl">
