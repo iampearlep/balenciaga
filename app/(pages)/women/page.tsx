@@ -1,4 +1,6 @@
 import { CustomBreadcrumb } from "@/components/CustomBreadcrumb";
+import { ProductTypeAccordion } from "@/components/ProductTypeAccordion";
+
 
 export default function Page () {
     return (
@@ -14,8 +16,11 @@ export default function Page () {
               <p>  Sort by: <span className="text-neutral-500 text-[0.95rem]"> Popular</span></p>
             </div>
           </div>
-          <div className="w-[95.6%] h-screen flex flex-row gap-x-6">
+          <div className="w-[95.6%] flex flex-row gap-x-6">
             <div className="bg-white w-3/12 ">
+            <div className="px-12 py-10 flex flex-col justify-center items-start gap-y-6">
+            <ProductTypeAccordion />
+            </div>
            <p className="invisible">filter</p>
             </div>
             <div className="bg-white w-9/12">
