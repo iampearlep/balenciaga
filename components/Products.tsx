@@ -5,57 +5,56 @@ import Image from "next/image";
 import { fetchProducts } from "@/app/api/products";
 import { SkeletonCard } from "./layouts/SkeletonCard";
 
-export const Products = () => {
+interface Product {
+    _id: string;
+    name: string;
+    description: string;
+    price: number;
+    category: string;
+    subcategory:  string;
+    image: string;
+  }
+
+export const Products= () => {
     const {
         data: products,
         isLoading,
         error,
-      } = useQuery({
+      } = useQuery<Product[], Error>({
         queryKey: ["products"],
         queryFn: fetchProducts,
         staleTime: Infinity,
       });
-  return (
-    <div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-6 ">
-        {isLoading ? (
-           <>
-            <SkeletonCard />
-            <SkeletonCard />
-            <SkeletonCard />
-            <SkeletonCard />
-            <SkeletonCard />
-            <SkeletonCard />
-            <SkeletonCard />
-            <SkeletonCard />
-            <SkeletonCard />
-            <SkeletonCard />
-            <SkeletonCard />
-            <SkeletonCard />
-           </>
+
+      const womenProducts = products?.filter(product => product.category.toLowerCase().includes('women')) || [];
+    
+      return (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-6">
+          {isLoading ? (
+            <>
+              {[...Array(12)].map((_, index) => (
+                <SkeletonCard key={index} />
+              ))}
+            </>
           ) : error ? (
             <div className="col-span-full">An error occurred: {error.message}</div>
-          ) : products && products.length > 0 ? (
+          ) : womenProducts.length > 0 ? (
             <>
-              {products.map((product: any) => (
+              {womenProducts.map((product) => (
                 <div key={product._id}>
-                  <Link href="">
+                  <Link href={`/product/${product._id}`}>
                     <div className="flex flex-col gap-y-3">
-                      <div className="relative h-[300px] overflow-y-hidden cursor-pointer">
+                      <div className="relative h-[300px] overflow-hidden cursor-pointer">
                         <Image
                           src={`/images/${product.image}`}
-                          height={564}
-                          width={564}
-                          alt=""
-                          priority={true}
-                          className="w-full h-full"
+                          fill
+                          alt={product.name}
+                          className="object-cover"
                         />
                       </div>
                       <div className="flex flex-col gap-y-1">
-                        <h4 className="uppercase font-medium">
-                          {product.name}
-                        </h4>
-                        <p>${product.price}</p>
+                        <h4 className="uppercase font-medium">{product.name}</h4>
+                        <p>${product.price.toFixed(2)}</p>
                       </div>
                     </div>
                   </Link>
@@ -66,6 +65,5 @@ export const Products = () => {
             <p className="col-span-full">No products available.</p>
           )}
         </div>
-    </div>
   )
 }

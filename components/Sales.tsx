@@ -32,18 +32,17 @@ export const Sales = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-x-6 gap-y-6 ">
         {isLoading ? (
            <>
-            <SkeletonCard />
-            <SkeletonCard />
-            <SkeletonCard />
-            <SkeletonCard />
-           </>
+           {[...Array(4)].map((_, index) => (
+             <SkeletonCard key={index} />
+           ))}
+         </>
           ) : error ? (
             <div className="col-span-full">An error occurred: {error.message}</div>
           ) : products && products.length > 0 ? (
             <>
               {products.slice(8, 12).map((product: any) => (
                 <div key={product._id}>
-                  <Link href="">
+                  <Link href={`/product/${product._id}`}>
                     <div className="flex flex-col gap-y-3">
                       <div className="relative h-[300px] overflow-y-hidden cursor-pointer">
                         <Image

@@ -23,8 +23,7 @@ export default function Page () {
             <ProductTypeAccordion />
             </div>
             </div>
-            <div className="w-9/12">
-            <p className="invisible">products</p>
+            <div className="w-9/12 pb-10">
             <Products />
             </div>
           </div>
