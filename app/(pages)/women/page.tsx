@@ -1,4 +1,5 @@
 import { CustomBreadcrumb } from "@/components/CustomBreadcrumb";
+import { Products } from "@/components/Products";
 import { ProductTypeAccordion } from "@/components/ProductTypeAccordion";
 
 
@@ -21,10 +22,10 @@ export default function Page () {
             <div className="px-12 py-10 flex flex-col justify-center items-start gap-y-6">
             <ProductTypeAccordion />
             </div>
-           <p className="invisible">filter</p>
             </div>
-            <div className="bg-white w-9/12">
+            <div className="w-9/12">
             <p className="invisible">products</p>
+            <Products />
             </div>
           </div>
         </main>

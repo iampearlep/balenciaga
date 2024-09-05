@@ -2,39 +2,32 @@
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import Image from "next/image";
-import { CgArrowLongRight } from "react-icons/cg";
 import { fetchProducts } from "@/app/api/products";
 import { SkeletonCard } from "./layouts/SkeletonCard";
 
-
-
-export const Rtw = () => {
-  const {
-    data: products,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["products"],
-    queryFn: fetchProducts,
-    staleTime: Infinity,
-  });
-
-
+export const Products = () => {
+    const {
+        data: products,
+        isLoading,
+        error,
+      } = useQuery({
+        queryKey: ["products"],
+        queryFn: fetchProducts,
+        staleTime: Infinity,
+      });
   return (
-    <div className=" w-11/12 mx-auto my-24">
-      <div className="flex flex-col gap-y-14">
-        <div className="flex flex-row justify-between items-center">
-          <h2 className="text-3xl md:text-[2.8rem] uppercase">Ready-to-wear</h2>
-          <Link
-            href="/"
-            className="flex flex-row justify-between items-center gap-x-2"
-          >
-            See more <CgArrowLongRight />
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-x-6 gap-y-6 ">
+    <div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-6 ">
         {isLoading ? (
            <>
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
             <SkeletonCard />
             <SkeletonCard />
             <SkeletonCard />
@@ -44,7 +37,7 @@ export const Rtw = () => {
             <div className="col-span-full">An error occurred: {error.message}</div>
           ) : products && products.length > 0 ? (
             <>
-              {products.slice(0, 4).map((product: any) => (
+              {products.map((product: any) => (
                 <div key={product._id}>
                   <Link href="">
                     <div className="flex flex-col gap-y-3">
@@ -73,7 +66,6 @@ export const Rtw = () => {
             <p className="col-span-full">No products available.</p>
           )}
         </div>
-      </div>
     </div>
-  );
-};
+  )
+}
