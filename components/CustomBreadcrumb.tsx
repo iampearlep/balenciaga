@@ -9,24 +9,31 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 
-export function CustomBreadcrumb() {
+interface CustomBreadcrumbProps {
+  firstLink: string;
+  firstItem: string;
+  secondLink: string;
+  secondItem: string;
+  pageTitle: string;
+}
+export const CustomBreadcrumb : React.FC<CustomBreadcrumbProps> = ({firstItem, firstLink, secondItem, secondLink, pageTitle}) => {
   return (
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/women">Women</BreadcrumbLink>
+          <BreadcrumbLink href={firstLink}>{firstItem}</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
         <TbSlash />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/women">Ready-to-wear</BreadcrumbLink>
+          <BreadcrumbLink href={secondLink}>{secondItem}</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
         <TbSlash />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbPage>New Arrival</BreadcrumbPage>
+          <BreadcrumbPage>{pageTitle}</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
