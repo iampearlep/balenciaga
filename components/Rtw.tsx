@@ -5,7 +5,7 @@ import Image from "next/image";
 import { CgArrowLongRight } from "react-icons/cg";
 import { fetchProducts } from "@/app/api/products";
 import { SkeletonCard } from "./layouts/SkeletonCard";
-
+import ErrorImg from "@/public/images/error-img.png"
 
 
 export const Rtw = () => {
@@ -41,6 +41,16 @@ export const Rtw = () => {
         </>
           ) : error ? (
             <div className="col-span-full">An error occurred: {error.message}</div>
+            // <div className="col-span-full">
+            //    <Image
+            //               src={ErrorImg}
+            //               height={429}
+            //               width={604}
+            //               alt=""
+            //               priority={true}
+            //               className="w-full h-full mx-auto"
+            //             />
+            // </div>
           ) : products && products.length > 0 ? (
             <>
               {products.slice(0, 4).map((product: any) => (

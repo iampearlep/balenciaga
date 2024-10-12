@@ -110,35 +110,35 @@ const Navbar = () => {
                   Home
                 </Link>
                 <Link
-                  href="/"
+                  href="/men"
                   onClick={handleToggle}
                   className="cursor-pointer w-full py-2"
                 >
                   Men
                 </Link>
                 <Link
-                  href="/"
+                  href="/women"
                   onClick={handleToggle}
                   className="cursor-pointer w-full py-2"
                 >
                   Women
                 </Link>
                 <Link
-                  href="/"
+                  href="/kids"
                   onClick={handleToggle}
                   className="cursor-pointer w-full py-2"
                 >
                   Kids
                 </Link>
                 <Link
-                  href="/"
+                  href="/explore"
                   onClick={handleToggle}
                   className="cursor-pointer w-full py-2"
                 >
                   Explore
                 </Link>
                 <Link
-                  href="/"
+                  href="/new"
                   onClick={handleToggle}
                   className="cursor-pointer w-full py-2"
                 >

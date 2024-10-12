@@ -43,7 +43,7 @@ export const YG = () => {
             className="h-auto w-auto"
           />
         </div>
-        <div className="items-center w-[50%] md:w-[35%] pt-10 md:pt-0">
+        <div className="items-center w-[40%] md:w-[35%] pt-10 md:pt-0">
            <p>
            This lineup continues to reimagine wardrope essentials with an
             emphasis on hoodies and sweatpants in elevated proportions. 
