@@ -5,7 +5,7 @@ import { fetchProducts } from "@/app/api/products";
 import Image from "next/image";
 import { CgArrowLongRight } from "react-icons/cg";
 import { SkeletonCard } from "./layouts/SkeletonCard";
-
+import { Product } from "@/types/product";
 export const Sales = () => {
   const {
     data: products,
@@ -40,9 +40,9 @@ export const Sales = () => {
             <div className="col-span-full">An error occurred: {error.message}</div>
           ) : products && products.length > 0 ? (
             <>
-              {products.slice(8, 12).map((product: any) => (
-                <div key={product._id}>
-                  <Link href={`/product/${product._id}`}>
+              {products.slice(3, 7).map((product: Product) => (
+                <div key={product.id}>
+                  <Link href={`/product/${product.id}`}>
                     <div className="flex flex-col gap-y-3">
                       <div className="relative h-[300px] overflow-y-hidden cursor-pointer">
                         <Image

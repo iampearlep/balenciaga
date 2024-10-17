@@ -5,7 +5,7 @@ import { fetchProducts } from "@/app/api/products";
 import Image from "next/image";
 import { CgArrowLongRight } from "react-icons/cg";
 import { SkeletonCard } from "./layouts/SkeletonCard";
-
+import { Product } from "@/types/product";
 
 
 export const Sfw = () => {
@@ -18,6 +18,11 @@ export const Sfw = () => {
     queryFn: fetchProducts,
     staleTime: Infinity,
   });
+
+  const filteredProducts = products
+  ?.filter((product: Product) => product.subcategory === "Sneakers")
+  .slice(0, 4) ?? [];
+ 
 
   return (
     <div className=" w-11/12 mx-auto my-24">
@@ -44,9 +49,9 @@ export const Sfw = () => {
             <div className="col-span-full">An error occurred: {error.message}</div>
           ) : products && products.length > 0 ? (
             <>
-              {products.slice(4, 8).map((product: any) => (
-                <div key={product._id}>
-                  <Link href={`/product/${product._id}`}>
+              {filteredProducts.slice(0, 4).map((product: Product) => (
+                <div key={product.id}>
+                  <Link href={`/product/${product.id}`}>
                     <div className="flex flex-col gap-y-3">
                       <div className="relative h-[300px] overflow-y-hidden cursor-pointer">
                         <Image

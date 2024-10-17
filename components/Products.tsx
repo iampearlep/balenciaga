@@ -4,16 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { fetchProducts } from "@/app/api/products";
 import { SkeletonCard } from "./layouts/SkeletonCard";
-
-interface Product {
-    _id: string;
-    name: string;
-    description: string;
-    price: number;
-    category: string;
-    subcategory:  string;
-    image: string;
-  }
+import { Product } from "@/types/product";
 
 export const Products= () => {
     const {
@@ -41,8 +32,8 @@ export const Products= () => {
           ) : womenProducts.length > 0 ? (
             <>
               {womenProducts.map((product) => (
-                <div key={product._id}>
-                  <Link href={`/product/${product._id}`}>
+                <div key={product.id}>
+                  <Link href={`/product/${product.id}`}>
                     <div className="flex flex-col gap-y-3">
                       <div className="relative h-[300px] overflow-hidden cursor-pointer">
                         <Image
@@ -54,7 +45,7 @@ export const Products= () => {
                       </div>
                       <div className="flex flex-col gap-y-1">
                         <h4 className="uppercase font-medium">{product.name}</h4>
-                        <p>${product.price.toFixed(2)}</p>
+                        <p>${product.price}</p>
                       </div>
                     </div>
                   </Link>
