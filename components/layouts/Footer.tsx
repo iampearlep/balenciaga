@@ -5,12 +5,12 @@ export const Footer = () => {
     <div className="bg-neutral-900 text-white border-white border-t">
         <div className="grid grid-cols-1 md:grid-cols-6 w-11/12 mx-auto ">
             <div className="flex flex-col gap-y-4 py-4 md:py-8">
-                <h5 className="uppercase text-base font-medium">Newsletter</h5>
-                <Link className="text-sm underline" href='/'>Subscribe to our newsletter</Link>
+                <h5 className="uppercase text-sm font-medium">Newsletter</h5>
+                <Link className="text-[12px] underline" href='/'>Subscribe to our newsletter</Link>
             </div>
             <div className="flex flex-col gap-y-4 md:border-l border-white md:px-4 py-4 md:py-8">
-                <h5 className="uppercase text-base font-medium">Client services</h5>
-                <div className="text-sm flex flex-col gap-y-3">
+                <h5 className="uppercase text-sm font-medium">Client services</h5>
+                <div className="text-[12px] flex flex-col gap-y-3">
                 <Link href="/" className="cursor-pointer">
                 FAQ
             </Link>
@@ -29,8 +29,8 @@ export const Footer = () => {
                 </div>
             </div>
             <div className="flex flex-col gap-y-4 md:border-l border-white md:px-4 py-4 md:py-8">
-                <h5 className="uppercase text-base font-medium">The Company</h5>
-               <div className="text-sm flex flex-col gap-y-3">
+                <h5 className="uppercase text-sm font-medium">The Company</h5>
+               <div className="text-[12px] flex flex-col gap-y-3">
                <Link href="/" className="cursor-pointer">
              Careers
              </Link>
@@ -50,8 +50,8 @@ export const Footer = () => {
                
             </div>
             <div className="flex flex-col gap-y-4 md:border-l border-white md:px-4 py-4 md:py-8">
-                <h5 className="uppercase text-base font-medium">Connect</h5>
-                <div className="text-sm flex flex-col gap-y-3">
+                <h5 className="uppercase text-sm font-medium">Connect</h5>
+                <div className="text-[12px] flex flex-col gap-y-3">
                 <Link href="/" className="cursor-pointer">
              Facebook
              </Link>
@@ -67,8 +67,8 @@ export const Footer = () => {
                 </div>
             </div>
             <div className="flex flex-col gap-y-4 md:border-l border-white md:px-4 py-4 md:py-8">
-                <h5 className="uppercase text-basefont-medium">Botiques</h5>
-               <div className="text-sm flex flex-col gap-y-3">
+                <h5 className="uppercase text-sm font-medium">Botiques</h5>
+               <div className="text-[12px] flex flex-col gap-y-3">
                <Link href="/" className="cursor-pointer">
              Store Appointment
              </Link>
@@ -84,8 +84,8 @@ export const Footer = () => {
                </div>
             </div>
             <div className="flex flex-col gap-y-4 md:border-l border-white md:px-4 py-4 md:py-8">
-                <h5  className="uppercase text-base font-medium">Contact Us</h5>
-            <div className="text-sm flex flex-col gap-y-3">
+                <h5  className="uppercase text-sm font-medium">Contact Us</h5>
+            <div className="text-[12px] flex flex-col gap-y-3">
             <p>Our Clients advisors are available <span>Mon-Sat 9:30am - 7pm</span></p>
                 <p>WhatsApp <span className="underline">+234 81 74 56 39 01</span></p>
                 <p>Call us <span className="underline"> +234 81 74 56 39 01</span></p>
