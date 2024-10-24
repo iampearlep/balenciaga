@@ -3,8 +3,8 @@ import { Skeleton } from "@/components/ui/skeleton"
 
 export const ProductDetailsSkeleton = () => {
   return (
-   <div className="w-11/12 mx-auto py-32">
-     <div className="grid grid-cols-2 gap-x-10">
+   <div className="w-11/12 mx-auto py-12 md:py-32">
+     <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-10">
     <div>
         <Skeleton className="h-[600px] w-full rounded-sm" />
     </div>

@@ -25,8 +25,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   if (!product) return <div>Product not found</div>;
 
   return (
-    <div className="w-11/12 mx-auto py-32">
-      <div className="grid grid-cols-2 gap-x-10">
+    <div className="w-11/12 mx-auto py-12 md:py-32">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-10">
         <div>
           <Image
             src={`/images/${product.image}`}
