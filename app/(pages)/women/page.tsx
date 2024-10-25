@@ -14,12 +14,12 @@ export default function Page () {
           </div>
           <div className="md:w-[95.6%] pt-2 pb-8">
             <div className="bg-white text-end py-3 px-5">
-              <p>  Sort by: <span className="text-neutral-500 text-[0.95rem]"> Popular</span></p>
+              <p>Sort by: <span className="text-neutral-500 text-[0.95rem]"> Popular</span></p>
             </div>
           </div>
-          <div className="md:w-[95.6%] flex flex-col justify-center items-center md:flex-row gap-x-6">
-            <div className="hidden md:block bg-white w-3/12 ">
-            <div className="px-12 py-10 flex flex-col justify-center items-start gap-y-6">
+          <div className="md:w-[95.6%] flex md:flex-row gap-x-6">
+            <div className="hidden md:flex bg-white w-3/12 ">
+            <div className="px-12 py-10 flex flex-col justify-start items-start gap-y-6">
             <ProductTypeAccordion />
             <div className="w-full mx-auto flex flex-col gap-y-3 justify-center items-center py-10">
               <button className="bg-black text-white  py-3 rounded-sm w-8/12">Apply</button>

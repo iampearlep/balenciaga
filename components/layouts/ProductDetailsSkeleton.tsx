@@ -10,10 +10,10 @@ export const ProductDetailsSkeleton = () => {
     </div>
     <div className="flex flex-col gap-y-4">
         <div>
-        <Skeleton className="h-[50px] w-[400px] rounded-sm" />
+        <Skeleton className="h-[50px] w-full rounded-sm" />
         </div>
         <div>
-        <Skeleton className="h-[30px] w-[300px] rounded-sm" />
+        <Skeleton className="h-[30px] w-full rounded-sm" />
         </div>
         <div>
         <Skeleton className="h-[15px] w-[50px] rounded-sm" />

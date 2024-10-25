@@ -5,6 +5,7 @@ import axios from "axios";
 import { Product } from "@/types/product";
 import { ProductDetailsSkeleton } from "@/components/layouts/ProductDetailsSkeleton";
 import { CiCircleInfo } from "react-icons/ci";
+import Link from "next/link";
 const fetchProduct = async (id: string): Promise<Product> => {
   const { data } = await axios.get(`/api/products/${id}`);
   return data;
@@ -57,6 +58,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             <button className="bg-black rounded text-white py-2">Add to bag</button>
             <button className="bg-white border-black rounded-sm py-2">Buy now</button>
           </div>
+          <Link href="/" className="underline">Go back</Link>
         </div>
       </div> 
     </div>
