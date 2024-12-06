@@ -6,7 +6,7 @@ import { fetchProducts } from "@/app/api/products";
 import { SkeletonCard } from "./layouts/SkeletonCard";
 import { Product } from "@/types/product";
 
-export const Products= () => {
+export const WomenProducts= () => {
     const {
         data: products,
         isLoading,

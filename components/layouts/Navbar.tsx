@@ -16,11 +16,11 @@ const Navbar = () => {
       <div className="hidden md:flex flex-row items-center justify-between uppercase py-6">
         <div className="flex flex-row justify-between w-7/12">
           <div className="flex flex-row justify-between items-center font-medium text-[0.9rem] gap-x-6">
-            <Link href="/">Men</Link>
+            <Link href="/men">Men</Link>
             <Link href="/women">Women</Link>
-            <Link href="/">Kids</Link>
-            <Link href="/">Explore</Link>
-            <Link href="/">New</Link>
+            <Link href="/kids">Kids</Link>
+            <Link href="/explore">Explore</Link>
+            <Link href="/new">New</Link>
           </div>
           <div className="text-neutral-900 text-2xl font-bold tracking-widest">
             <Link href="/">Balenciaga</Link>

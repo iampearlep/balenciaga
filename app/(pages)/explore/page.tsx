@@ -1,16 +1,14 @@
 import { CustomBreadcrumb } from "@/components/CustomBreadcrumb";
-import { WomenProducts } from "@/components/WomenProducts";
 import { ProductTypeAccordion } from "@/components/ProductTypeAccordion";
-
 
 export default function Page () {
     return (
         <main>
           <div className=" w-11/12 mx-auto py-5 flex flex-col gap-y-5">
           <div>
-            <CustomBreadcrumb firstItem="Women" firstLink="/women" secondItem="Ready-to-wear" secondLink="/women" pageTitle="New Arrivals" />
+            <CustomBreadcrumb firstItem="Explore" firstLink="/explore" secondItem="Ready-to-wear" secondLink="/Explore" pageTitle="New Arrivals" />
            </div>
-            <h1 className="uppercase text-3xl md:text-[2.8rem]">New Arrivals</h1>
+            <h1 className="uppercase text-3xl md:text-[2.8rem]">Explore</h1>
           </div>
           <div className="md:w-[95.6%] pt-2 pb-8">
             <div className="bg-white text-end py-3 px-5">
@@ -28,7 +26,7 @@ export default function Page () {
             </div>
             </div>
             <div className="w-11/12 md:w-9/12 mx-auto pb-10">
-            <WomenProducts />
+            <p>Explore Products</p>
           <div className="flex justify-center items-center py-10"><button className="bg-black text-white px-4 py-3 rounded-sm w-4/12 md:w-2/12">See more</button></div>
             </div>
           </div>
