@@ -1,4 +1,5 @@
 import { CustomBreadcrumb } from "@/components/CustomBreadcrumb";
+import { NewProducts } from "@/components/NewProducts";
 import { ProductTypeAccordion } from "@/components/ProductTypeAccordion";
 
 export default function Page () {
@@ -26,7 +27,7 @@ export default function Page () {
             </div>
             </div>
             <div className="w-11/12 md:w-9/12 mx-auto pb-10">
-            <p>Explore Products</p>
+           <NewProducts />
           <div className="flex justify-center items-center py-10"><button className="bg-black text-white px-4 py-3 rounded-sm w-4/12 md:w-2/12">See more</button></div>
             </div>
           </div>

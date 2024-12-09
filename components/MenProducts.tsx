@@ -6,7 +6,7 @@ import { fetchProducts } from "@/app/api/products";
 import { SkeletonCard } from "./layouts/SkeletonCard";
 import { Product } from "@/types/product";
 
-export const WomenProducts= () => {
+export const MenProducts= () => {
     const {
         data: products,
         isLoading,
@@ -17,7 +17,7 @@ export const WomenProducts= () => {
         staleTime: Infinity,
       });
 
-      const womenProducts = products?.filter(product => product.category.toLowerCase() === 'women') || [];
+      const menProducts = products?.filter(product => product.category.toLowerCase() === 'men') || [];
     
       return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-6">
@@ -29,9 +29,9 @@ export const WomenProducts= () => {
             </>
           ) : error ? (
             <div className="col-span-full">An error occurred: {error.message}</div>
-          ) : womenProducts.length > 0 ? (
+          ) : menProducts.length > 0 ? (
             <>
-              {womenProducts.map((product) => (
+              {menProducts.map((product) => (
                 <div key={product.id}>
                   <Link href={`/product/${product.id}`}>
                     <div className="flex flex-col gap-y-3">
