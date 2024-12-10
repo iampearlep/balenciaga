@@ -5,7 +5,7 @@ import Img2 from "@/public/images/cimg4.jpg"
 
 export const Classic = () => {
   return (
-    <div className='w-11/12 mx-auto my-24'>
+    <div className='w-11/12 mx-auto my-10 md:my-24'>
         <div>
             <h2 className='text-4xl md:text-7xl uppercase max-w-5xl py-16'>Classic Looks are paired down and redrawn</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-9">

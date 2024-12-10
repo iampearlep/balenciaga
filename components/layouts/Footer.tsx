@@ -5,8 +5,8 @@ export const Footer = () => {
     <div className="bg-neutral-900 text-white border-white border-t">
         <div className="grid grid-cols-1 md:grid-cols-6 w-11/12 mx-auto ">
             <div className="flex flex-col gap-y-4 py-4 md:py-8">
-                <h5 className="uppercase text-sm font-medium">Newsletter</h5>
-                <Link className="text-[12px] underline" href='/'>Subscribe to our newsletter</Link>
+                <h5 className="uppercase text-sm font-medium">Balenciaga.</h5>
+                <p className="text-[12px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, velit inventore.</p>
             </div>
             <div className="flex flex-col gap-y-4 md:border-l border-white md:px-4 py-4 md:py-8">
                 <h5 className="uppercase text-sm font-medium">Client services</h5>

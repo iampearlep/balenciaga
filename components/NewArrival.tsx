@@ -32,7 +32,7 @@ export const NewArrival = () => {
     ]
 
   return (
-   <div className="bg-white py-28">
+   <div className="bg-white py-5 md:py-28">
      <div className=" w-11/12 mx-auto">
         <div className="flex flex-col-reverse md:flex-row gap-x-7">
             <div className="md:w-8/12 flex flex-col relative">
