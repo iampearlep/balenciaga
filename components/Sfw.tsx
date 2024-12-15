@@ -32,7 +32,7 @@ export const Sfw = () => {
             Sneakers for women
           </h2>
           <Link
-            href="/"
+            href="/explore"
             className="flex flex-row justify-between items-center gap-x-2 text-nowrap"
           >
             See more <CgArrowLongRight />

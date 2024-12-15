@@ -27,7 +27,7 @@ export const Rtw = () => {
         <div className="flex flex-row justify-between items-center">
           <h2 className="text-3xl md:text-[2.8rem] uppercase">Ready-to-wear</h2>
           <Link
-            href="/"
+            href="/explore"
             className="flex flex-row justify-between items-center gap-x-2"
           >
             See more <CgArrowLongRight />
