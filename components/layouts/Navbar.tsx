@@ -2,15 +2,41 @@
 import { useState } from "react";
 import Link from "next/link";
 import { AiOutlineClose, AiOutlineUser } from "react-icons/ai";
-import { IoMdHeartEmpty, IoIosSearch } from "react-icons/io";
+import { IoMdHeartEmpty, IoIosSearch, IoIosLogOut } from "react-icons/io";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { SlMenu } from "react-icons/sl";
-
+import { useAuthStore } from "@/store/authStore";
+import { useRouter } from "next/navigation";
 const Navbar = () => {
   const [isToggle, setIsToggle] = useState(false);
+
+  const {user, logOut} = useAuthStore(state => ({
+    user: state.user,
+    logOut: state.logOut
+  }))
+
+  const router = useRouter();
+
   const handleToggle = () => {
     setIsToggle(!isToggle);
   };
+
+  const handleLogOut = async () => {
+    await logOut();
+    router.push('/');
+  };
+
+  const getInitials = () => {
+    if (user?.displayName) {
+      return user.displayName.charAt(0).toUpperCase();
+    }
+    if (user?.email) {
+      return user.email.charAt(0).toUpperCase();
+    }
+    return <AiOutlineUser className="w-5 h-4" />;
+  };
+
+  
   return (
     <div className="mx-auto w-11/12">
       <div className="hidden md:flex flex-row items-center justify-between uppercase py-6">
@@ -33,11 +59,29 @@ const Navbar = () => {
             </Link>
           </button>
 
-          <button>
-            <Link href="/">
-              <AiOutlineUser className="w-5 h-4" />
-            </Link>
-          </button>
+          <div className="flex items-center gap-x-6">
+        {user ? (
+          <div className="flex items-center gap-x-6">
+            <div className="flex items-center space-x-2">
+            <div className="w-4 h-4 bg-neutral-900 text-white rounded-full flex items-center justify-center text-xs font-semibold">
+                {getInitials()}
+              </div>
+            </div>
+            <button 
+              onClick={handleLogOut}
+              className="flex items-center space-x-2 text-red-500 hover:text-red-700"
+            >
+              <IoIosLogOut className="w-5 h-4" />
+            </button>
+          </div>
+        ) : (
+          <Link 
+            href="/login" 
+          >
+            <AiOutlineUser className="w-5 h-4" />
+          </Link>
+        )}
+      </div>
 
           <button>
             <Link href="/">
@@ -71,12 +115,30 @@ const Navbar = () => {
           <div className="text-xl font-semibold uppercase tracking-widest">
             <Link href="/">Balenciaga</Link>
           </div>
-          <div className="flex flex-row items-center gap-x-3">
-            <button>
-              <Link href="/">
-                <IoMdHeartEmpty className="w-5 h-4" />
-              </Link>
+          <div className="flex flex-row items-center gap-x-1.5">
+            <div>
+            {user ? (
+          <div className="flex items-center gap-x-2">
+            <div className="flex items-center space-x-1">
+            <div className="w-4 h-4 bg-neutral-900 text-white rounded-full flex items-center justify-center text-xs font-semibold">
+                {getInitials()}
+              </div>
+            </div>
+            <button 
+              onClick={handleLogOut}
+              className="flex items-center space-x-2 text-red-500 hover:text-red-700"
+            >
+              <IoIosLogOut className="w-5 h-4" />
             </button>
+          </div>
+        ) : (
+          <Link 
+            href="/login" 
+          >
+            <AiOutlineUser className="w-5 h-4" />
+          </Link>
+        )}
+            </div>
 
             <button>
               <Link href="/">
