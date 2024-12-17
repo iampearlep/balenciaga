@@ -1,6 +1,7 @@
 "use client"
 import { useState, useRef } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { GoArrowRight } from "react-icons/go"
 
 
@@ -11,23 +12,28 @@ export const NewArrival = () => {
     const links = [
         {
             title: "For Men",
-            src: "limg1.jpg"
+            src: "limg1.jpg",
+            path: 'men'
         },
         {
             title: "For Women",
-            src: "limg2.jpg"
+            src: "limg2.jpg",
+            path: 'women'
         },
         {
             title: "Balenciaga Music Pink Merch",
-            src: "limg3.jpg"
+            src: "limg3.jpg",
+            path: ''
         },
         {
             title: "Winter 23",
-            src: "limg5.jpg"
+            src: "limg5.jpg",
+            path: ''
         },
         {
             title: "Objects",
-            src: "limg6.jpg"
+            src: "limg6.jpg",
+            path: ''
         },
     ]
 
@@ -40,9 +46,11 @@ export const NewArrival = () => {
             {
                 links.map((link, index) => {
                     return (
-                        <div className="w-full flex flex-row justify-between items-baseline py-4 uppercase text-xl  border-b border-black cursor-pointer" key={index} onMouseOver={() => setSelectedLink(index)}>
-                           <h2 className=" ">{link.title}</h2>
-                           <span> <GoArrowRight className="w-8" /></span>
+                        <div className="w-full  py-4 uppercase text-xl  border-b border-black cursor-pointer" key={index} onMouseOver={() => setSelectedLink(index)}>
+                           <Link className="flex flex-row justify-between items-baseline" href={link.path}>
+                           <h2 className="">{link.title}</h2>
+                           <span><GoArrowRight className="w-8" /></span>
+                           </Link>
                         </div>
                     )
                 })
