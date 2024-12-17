@@ -1,6 +1,7 @@
 import Image from "next/image";
 import HeroImg from "@/public/images/hero-img.jpg";
 import MobileHero from "@/public/images/hero-mobile.jpg";
+import Link from "next/link";
 export const Hero = () => {
   return (
     <div className="flex relative h-screen overflow-hidden">
@@ -30,7 +31,7 @@ export const Hero = () => {
             New collection
           </h1>
           <button className="bg-black text-sm hidden md:block text-white w-2/6 md:w-1/2 md:text-xl my-5 md:my-14 py-3 md:py-4 rounded-sm">
-            Shop now
+          <Link href='/explore'>Shop now</Link>
           </button>
         </div>
         <div className="absolute top-0 right-0 pt-[350px] md:pt-[290px] px-5 md:px-[3.75rem]  flex flex-col gap-y-2 text-white uppercase ">
@@ -46,7 +47,7 @@ export const Hero = () => {
         </div>
         <div className="absolute top-0 inset-0 pt-[520px] w-full px-5">
         <button className="bg-black w-full text-base block md:hidden text-white my-5 py-3">
-            Shop now
+           <Link href='/explore'>Shop now</Link>
           </button>
         </div>
       </div>
