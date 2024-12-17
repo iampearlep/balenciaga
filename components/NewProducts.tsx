@@ -37,7 +37,8 @@ export const NewProducts= () => {
                       <div className="relative h-[300px] overflow-hidden cursor-pointer">
                         <Image
                           src={`/images/${product.image}`}
-                          fill
+                          height={564}
+                          width={564}
                           alt={product.name}
                           className="object-cover"
                         />

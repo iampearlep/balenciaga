@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -6,6 +7,9 @@ import { Product } from "@/types/product";
 import { ProductDetailsSkeleton } from "@/components/layouts/ProductDetailsSkeleton";
 import { CiCircleInfo } from "react-icons/ci";
 import Link from "next/link";
+import useCartStore from "@/store/cartStore";
+
+
 const fetchProduct = async (id: string): Promise<Product> => {
   const { data } = await axios.get(`/api/products/${id}`);
   return data;
@@ -20,6 +24,23 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     queryKey: ["product", params.id],
     queryFn: () => fetchProduct(params.id),
   });
+
+  const [selectedSize, setSelectedSize] = useState<string | null>(null)
+  const addToCart = useCartStore(state => state.addToCart)
+
+  
+  const handleAddToCart = () => {
+   if(!product || !selectedSize) return
+
+    const productWithSize = {
+      ...product,
+      selectedSize: selectedSize
+    }
+
+    addToCart(productWithSize)
+    // console.log(`Added ${product.name} in size ${selectedSize} to your cart!`)
+      //alert(`Added ${product.name} in size ${selectedSize} to your cart!`)
+  }
 
   if (isLoading) return <ProductDetailsSkeleton />;
   if (error) return <div>Error loading product</div>;
@@ -50,12 +71,31 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           <p className="text-xs text-red-600 flex flex-row items-center space-x-2"><CiCircleInfo />There are only a few left. Order soon.</p>
           <div className="">
             <p>Size:</p>
-           <div className="flex flex-row space-x-5 py-2"> {product.size.map((size, index) => {
-              return <button className="px-3 py-1 rounded-sm border border-gray-950 hover:text-white hover:bg-black transition-all duration-300 ease-linear" key={index}>{size}</button>;
+           <div className="flex flex-row space-x-5 py-2">
+             {product.size.map((size, index) => {
+              return <button key={index} 
+              className={`
+                px-3 py-1 rounded-sm border border-gray-950 
+                transition-all duration-300 ease-linear
+                ${selectedSize === size 
+                  ? 'bg-black text-white' 
+                  : 'hover:text-white hover:bg-black'}
+              `}
+              onClick={() => setSelectedSize(size)}
+              >{size}</button>;
             })}</div>
           </div>
           <div className="flex flex-col gap-6">
-            <button className="bg-black rounded text-white py-2">Add to bag</button>
+            <button className={`
+                rounded text-white py-2 
+                ${!selectedSize 
+                  ? 'bg-gray-400 cursor-not-allowed' 
+                  : 'bg-black'}
+              `}
+              onClick={handleAddToCart}
+              disabled={!selectedSize}>
+           {selectedSize ? 'Add to bag' : 'Select a size'}
+              </button>
             <button className="bg-white border-black rounded-sm py-2">Buy now</button>
           </div>
           <Link href="/" className="underline">Go back</Link>
