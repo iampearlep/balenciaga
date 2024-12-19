@@ -7,13 +7,14 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { SlMenu } from "react-icons/sl";
 import { useAuthStore } from "@/store/authStore";
 import { useRouter } from "next/navigation";
+import { CartDrawer } from "../CartDrawer";
 const Navbar = () => {
   const [isToggle, setIsToggle] = useState(false);
 
-  const {user, logOut} = useAuthStore(state => ({
+  const { user, logOut } = useAuthStore((state) => ({
     user: state.user,
-    logOut: state.logOut
-  }))
+    logOut: state.logOut,
+  }));
 
   const router = useRouter();
 
@@ -23,7 +24,7 @@ const Navbar = () => {
 
   const handleLogOut = async () => {
     await logOut();
-    router.push('/');
+    router.push("/");
   };
 
   const getInitials = () => {
@@ -36,7 +37,6 @@ const Navbar = () => {
     return <AiOutlineUser className="w-5 h-4" />;
   };
 
-  
   return (
     <div className="mx-auto w-11/12">
       <div className="hidden md:flex flex-row items-center justify-between uppercase py-6">
@@ -53,41 +53,35 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex flex-row justify-between items-center gap-x-6">
-          <button>
+          <button className="px-3">
             <Link href="/">
               <IoIosSearch className="w-5 h-4" />
             </Link>
           </button>
 
           <div className="flex items-center gap-x-6">
-        {user ? (
-          <div className="flex items-center gap-x-6">
-            <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 bg-neutral-900 text-white rounded-full flex items-center justify-center text-xs font-semibold">
-                {getInitials()}
+            {user ? (
+              <div className="flex items-center gap-x-8">
+                <div className="flex items-center space-x-2">
+                  <div className="w-4 h-4 bg-neutral-900 text-white rounded-full flex items-center justify-center text-xs font-semibold">
+                    {getInitials()}
+                  </div>
+                </div>
+                <button
+                  onClick={handleLogOut}
+                  className="flex items-center space-x-2 text-red-500 hover:text-red-700"
+                >
+                  <IoIosLogOut className="w-5 h-4" />
+                </button>
               </div>
-            </div>
-            <button 
-              onClick={handleLogOut}
-              className="flex items-center space-x-2 text-red-500 hover:text-red-700"
-            >
-              <IoIosLogOut className="w-5 h-4" />
-            </button>
+            ) : (
+              <Link href="/login">
+                <AiOutlineUser className="w-5 h-4" />
+              </Link>
+            )}
           </div>
-        ) : (
-          <Link 
-            href="/login" 
-          >
-            <AiOutlineUser className="w-5 h-4" />
-          </Link>
-        )}
-      </div>
 
-          <button>
-            <Link href="/">
-              <HiOutlineShoppingBag className="w-5 h-4" />
-            </Link>
-          </button>
+          <CartDrawer />
 
           <button>
             <Link href="/">
@@ -115,36 +109,30 @@ const Navbar = () => {
           <div className="text-xl font-semibold uppercase tracking-widest">
             <Link href="/">Balenciaga</Link>
           </div>
-          <div className="flex flex-row items-center gap-x-1.5">
+          <div className="flex flex-row items-center gap-x-0.5">
             <div>
-            {user ? (
-          <div className="flex items-center gap-x-2">
-            <div className="flex items-center space-x-1">
-            <div className="w-4 h-4 bg-neutral-900 text-white rounded-full flex items-center justify-center text-xs font-semibold">
-                {getInitials()}
-              </div>
-            </div>
-            <button 
-              onClick={handleLogOut}
-              className="flex items-center space-x-2 text-red-500 hover:text-red-700"
-            >
-              <IoIosLogOut className="w-5 h-4" />
-            </button>
-          </div>
-        ) : (
-          <Link 
-            href="/login" 
-          >
-            <AiOutlineUser className="w-5 h-4" />
-          </Link>
-        )}
+              {user ? (
+                <div className="flex items-center gap-x-2.5">
+                  <div className="flex items-center space-x-1">
+                    <div className="w-4 h-4 bg-neutral-900 text-white rounded-full flex items-center justify-center text-xs font-semibold">
+                      {getInitials()}
+                    </div>
+                  </div>
+                  <button
+                    onClick={handleLogOut}
+                    className="flex items-center space-x-2 text-red-500 hover:text-red-700"
+                  >
+                    <IoIosLogOut className="w-5 h-4" />
+                  </button>
+                </div>
+              ) : (
+                <Link href="/login">
+                  <AiOutlineUser className="w-5 h-4" />
+                </Link>
+              )}
             </div>
 
-            <button>
-              <Link href="/">
-                <HiOutlineShoppingBag className="w-5 h-4" />
-              </Link>
-            </button>
+            <CartDrawer />
           </div>
         </div>
 

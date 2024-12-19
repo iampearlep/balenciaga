@@ -6,61 +6,51 @@ const useCartStore = create<cartState>()(
   persist(
     (set, get) => ({
       cart: [],
+      isCartOpen: false,
 
       addToCart: (product) => {
         const existingProduct = get().cart.find(
-          (item) => item.id === product.id
+          (item) => item.id === product.id && item.selectedSize === product.selectedSize
         );
+
         if (existingProduct) {
           set((state) => ({
             cart: state.cart.map((item) =>
-              item.id === product.id
-                ? { ...item, quantity: item.quantity + 1 }
+              item.id === product.id && item.selectedSize === product.selectedSize
+                ? { ...item, quantity: (item.quantity || 0) + 1 }
                 : item
             ),
+            isCartOpen: true
           }));
         } else {
           set((state) => ({
             cart: [...state.cart, { ...product, quantity: 1 }],
+            isCartOpen: true
           }));
         }
       },
 
-      removeFromCart: (productId) => {
+      removeFromCart: (productId, selectedSize) => {
         set((state) => ({
-          cart: state.cart.filter((item) => item.id !== productId),
-        }));
-      },
-
-      incrementItem: (productId) => {
-        set((state) => ({
-          cart: state.cart.map((item) =>
-            item.id === productId
-              ? { ...item, quantity: item.quantity + 1 }
-              : item
+          cart: state.cart.filter((item) => 
+            !(item.id === productId && item.selectedSize === selectedSize)
           ),
         }));
       },
 
-      decrementItem: (productId) => {
-        set((state) => ({
-          cart: state.cart.map((item) =>
-            item.id === productId
-              ? { ...item, quantity: Math.max(1, item.quantity - 1) }
-              : item
-          ),
-        }));
-      },
-
-      updateQuantity: (productId, quantity) => {
+      updateQuantity: (productId, selectedSize, quantity) => {
         if (quantity <= 0) {
           set((state) => ({
-            cart: state.cart.filter((item) => item.id !== productId),
+            cart: state.cart.filter(
+              (item) => !(item.id === productId && item.selectedSize === selectedSize)
+            ),
           }));
         } else {
           set((state) => ({
-            cart: state.cart.filter((item) =>
-              item.id === productId ? { ...item, quantity } : item
+            cart: state.cart.map((item) =>
+              item.id === productId && item.selectedSize === selectedSize 
+                ? { ...item, quantity } 
+                : item
             ),
           }));
         }
@@ -72,9 +62,13 @@ const useCartStore = create<cartState>()(
 
       getTotalPrice: () => {
         return get().cart.reduce(
-          (total, item) => total + item.price * item.quantity,
+          (total, item) => total + (item.price || 0) * item.quantity,
           0
         );
+      },
+
+      toggleCart: (open) => {
+        set((state) => ({ isCartOpen: open ?? !state.isCartOpen }));
       },
 
       clearCart: () => {
@@ -82,7 +76,7 @@ const useCartStore = create<cartState>()(
       },
     }),
     {
-      name: "Store",
+      name: "cartStore",
     }
   )
 );
