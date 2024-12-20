@@ -121,7 +121,7 @@ export const CartDrawer = () => {
                   </div>
                 ))}
               </div>
-              <div className="w-11/12 mx-auto pt-14 flex flex-col items-center justify-center gap-y-10">
+              <div className="w-11/12 mx-auto pt-10 flex flex-col items-center justify-center gap-y-8">
                 {cart.length > 0 && (
                   <>
                     <div className="w-full flex flex-row justify-between font-bold">
