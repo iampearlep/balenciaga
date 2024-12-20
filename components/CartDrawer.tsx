@@ -6,6 +6,8 @@ import { Button } from "./ui/button";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { AiOutlineClose, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import useCartStore from "@/store/cartStore";
+import { useAuthStore } from "@/store/authStore";
+import { useRouter } from "next/navigation";
 
 export const CartDrawer = () => {
   const {
@@ -17,9 +19,22 @@ export const CartDrawer = () => {
     getTotalPrice,
   } = useCartStore();
 
+  const user = useAuthStore((state) => state.user);
+
+  const router = useRouter();
+
   const calculateTotal = () => {
     return getTotalPrice().toFixed(2);
   };
+
+  const handleProceedToCheckout = () => {
+    toggleCart(false);
+    if (!user) {
+      router.push("/login");
+    } else {
+      router.push("/checkout");
+    }
+  }
   return (
     <Drawer.Root direction="right" open={isCartOpen} onOpenChange={toggleCart}>
       <Drawer.Trigger className="relative flex h-10 items-center justify-center gap-2 overflow-hidden px-2 text-sm font-medium  transition-all hover:bg-[#FAFAFA] dark:bg-[#161615] dark:hover:bg-[#1A1A19] dark:text-white">
@@ -114,10 +129,13 @@ export const CartDrawer = () => {
                       <span>${calculateTotal()}</span>
                     </div>
                     <div className="w-full flex flex-col md:flex-row gap-x-5 gap-y-5">
-                      <Button className="w-full rounded-sm">
+                      <Button onClick={handleProceedToCheckout} className="w-full rounded-sm">
                         Proceed to Checkout
                       </Button>
-                      <Button variant="outline" className="w-full rounded-sm">
+                     <Button variant="outline" onClick={() => {
+          toggleCart(false);
+          router.push("/cart");
+        }} className="w-full rounded-sm">
                         View Cart
                       </Button>
                     </div>
