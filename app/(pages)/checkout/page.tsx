@@ -1,3 +1,4 @@
+import CheckoutCartSummary from "@/components/CheckoutCartSummary";
 import CheckoutInfo from "@/components/CheckoutInfo";
 
 export default function Page() {
@@ -12,7 +13,7 @@ export default function Page() {
                 <CheckoutInfo />
             </div>
             <div className="md:w-4/12">
-                CartSummary
+                <CheckoutCartSummary />
             </div>
         </div>
        </div>

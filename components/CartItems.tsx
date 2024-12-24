@@ -25,6 +25,7 @@ const CartItems = () => {
               alt={item.name}
               width={564}
               height={564}
+              priority
               className="mr-1 md:mr-4 w-28 h-28 object-cover"
             />
 
@@ -34,7 +35,7 @@ const CartItems = () => {
               <p className="text-gray-600">Category: <span className="font-medium text-neutral-950">{item.subcategory}</span></p>
 
               <p className="text-gray-600">
-                {item.selectedSize ? <p>Size: <span className="font-medium text-neutral-950">{item.selectedSize}</span></p> : ""}
+                {item.selectedSize ? <span>Size: <span className="font-medium text-neutral-950">{item.selectedSize}</span></span> : ""}
               </p>
 
               <div className="flex items-center gap-x-2 py-3">
