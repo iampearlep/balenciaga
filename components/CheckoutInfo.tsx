@@ -1,14 +1,30 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import useCartStore from "@/store/cartStore";
-import { PaystackButton } from "react-paystack";
+import dynamic from "next/dynamic";
+
+const PaystackButton = dynamic(
+  () => import("react-paystack").then((mod) => mod.PaystackButton),
+  {
+    ssr: false,
+    loading: () => (
+      <Button
+        className="text-white bg-black border-black border rounded-sm h-10 px-8"
+        disabled
+      >
+        Processing...
+      </Button>
+    ),
+  }
+);
 
 const CheckoutInfo = () => {
+  const [isClient, setIsClient] = useState(false);
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [surname, setSurName] = useState<string>("");
@@ -17,67 +33,89 @@ const CheckoutInfo = () => {
   const [address, setAddress] = useState<string>("");
   const [deliverycity, setDeliveryCity] = useState<string>("");
   const [deliveryphone, setDeliveryPhone] = useState<string>("");
-  const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "";
+
+  
+  const router = useRouter();
   const { clearCart, getTotalPrice } = useCartStore();
 
-  const billings = {
-    discount: 0.9,
-    total: getTotalPrice(),
-  };
+  
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
-  const amount = Math.round(billings.total * 1500 * billings.discount * 100);
+  
+  const billings = isClient
+    ? {
+        discount: 0.9,
+        total: getTotalPrice(),
+      }
+    : { discount: 0.9, total: 0 };
 
-  const router = useRouter();
+  const amount = isClient
+    ? Math.round(billings.total * 1500 * billings.discount * 100)
+    : 0;
 
-  const componentProps = {
-    email,
-    amount,
-    metadata: {
-      custom_fields: [
-        {
-          display_name: "Name",
-          variable_name: "name",
-          value: name,
+  
+  const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "";
+
+  
+  const componentProps = isClient
+    ? {
+        email,
+        amount,
+        metadata: {
+          custom_fields: [
+            {
+              display_name: "Name",
+              variable_name: "name",
+              value: name,
+            },
+            {
+              display_name: "SurName",
+              variable_name: "surname",
+              value: surname,
+            },
+            {
+              display_name: "Phone Number",
+              variable_name: "phone_number",
+              value: phone,
+            },
+            {
+              display_name: "City",
+              variable_name: "city",
+              value: city,
+            },
+            {
+              display_name: "Address",
+              variable_name: "address",
+              value: address,
+            },
+            {
+              display_name: "Delivery Phone Number",
+              variable_name: "deliveryphone",
+              value: deliveryphone,
+            },
+            {
+              display_name: "Delivery City",
+              variable_name: "delivery-city",
+              value: deliverycity,
+            },
+          ],
         },
-        {
-          display_name: "SurName",
-          variable_name: "surname",
-          value: surname,
+        publicKey,
+        text: "CONTINUE TO PAYMENT",
+        onSuccess: () => {
+          clearCart(), 
+          router.push("/success");
         },
-        {
-          display_name: "Phone Number",
-          variable_name: "phone_number",
-          value: phone,
-        },
-        {
-          display_name: "City",
-          variable_name: "city",
-          value: city,
-        },
-        {
-          display_name: "Address",
-          variable_name: "address",
-          value: address,
-        },
-        {
-          display_name: "Delivery Phone Number",
-          variable_name: "deliveryphone",
-          value: deliveryphone,
-        },
-        {
-          display_name: "Delivery City",
-          variable_name: "delivery-city",
-          value: deliverycity,
-        },
-      ],
-    },
-    publicKey,
-    text: "CONTINUE TO PAYMENT",
-    onSuccess: () => {
-      clearCart(), router.push("/success");
-    },
-    onClose: () => alert("Wait! don't go :("),
-  };
+        onClose: () => alert("Wait! don't go :("),
+      }
+    : null;
+
+
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <div>
@@ -196,10 +234,12 @@ const CheckoutInfo = () => {
             Go Back
           </Button>
         </Link>
-        <PaystackButton
-          className="text-white bg-black border-black border rounded-sm h-10 px-8"
-          {...componentProps}
-        />
+        {isClient && componentProps && (
+          <PaystackButton
+            className="text-white bg-black border-black border rounded-sm h-10 px-8"
+            {...componentProps}
+          />
+        )}
       </div>
     </div>
   );

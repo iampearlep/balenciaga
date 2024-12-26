@@ -77,6 +77,31 @@ const useCartStore = create<cartState>()(
     }),
     {
       name: "cartStore",
+      storage: {
+        getItem: (name) => {
+          if (typeof window === 'undefined') return null
+          try {
+            const item = localStorage.getItem(name)
+            return item ? JSON.parse(item) : null
+          } catch {
+            return null
+          }
+        },
+        setItem: (name, value) => {
+          if (typeof window !== 'undefined') {
+            try {
+              localStorage.setItem(name, JSON.stringify(value))
+            } catch {}
+          }
+        },
+        removeItem: (name) => {
+          if (typeof window !== 'undefined') {
+            try {
+              localStorage.removeItem(name)
+            } catch {}
+          }
+        }
+      }
     }
   )
 );
