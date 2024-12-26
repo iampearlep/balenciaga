@@ -1,3 +1,4 @@
+"use client"
 import CheckoutCartSummary from "@/components/CheckoutCartSummary";
 import CheckoutInfo from "@/components/CheckoutInfo";
 
