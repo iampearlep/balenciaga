@@ -8,6 +8,7 @@ import { ProductDetailsSkeleton } from "@/components/layouts/ProductDetailsSkele
 import { CiCircleInfo } from "react-icons/ci";
 import Link from "next/link";
 import useCartStore from "@/store/cartStore";
+import { SimilarProducts } from "@/components/SimilarProducts";
 
 
 const fetchProduct = async (id: string): Promise<Product> => {
@@ -89,7 +90,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             <button className={`
                 rounded text-white py-2 
                 ${!selectedSize 
-                  ? 'bg-gray-400 cursor-not-allowed' 
+                  ? 'bg-gray-300 cursor-not-allowed' 
                   : 'bg-black'}
               `}
               onClick={handleAddToCart}
@@ -101,6 +102,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           <Link href="/" className="underline">Go back</Link>
         </div>
       </div> 
+      <SimilarProducts product={product} />
     </div>
   );
 }

@@ -8,3 +8,7 @@ export type Product  = {
     subcategory: string;
     size: string[];
 }
+
+export type SimilarProductsProps = {
+    product: Product;
+  };
