@@ -8,6 +8,7 @@ import { useAuthStore } from "@/store/authStore";
 import { useRouter } from "next/navigation";
 import { CartDrawer } from "../CartDrawer";
 import { AnimatePresence, motion } from 'framer-motion'
+import AnimatedText from "../AnimatedText";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
@@ -38,7 +39,7 @@ const Navbar = () => {
   };
 
 
-  const mobileNavLinks = [
+  const navLinks = [
     { title: "Home", href: "/" },
     { title: "Men", href: "/men" },
     { title: "Women", href: "/women" },
@@ -106,11 +107,15 @@ const Navbar = () => {
       <div className="hidden md:flex flex-row items-center justify-between uppercase py-6">
         <div className="flex flex-row justify-between w-7/12">
           <div className="flex flex-row justify-between items-center font-medium text-[0.9rem] gap-x-6">
-            <Link href="/men">Men</Link>
-            <Link href="/women">Women</Link>
-            <Link href="/kids">Kids</Link>
-            <Link href="/explore">Explore</Link>
-            <Link href="/new">New</Link>
+          {navLinks.slice(1, 6).map((link, index) => {
+            return (
+              <div key={index} className="relative">
+               <Link href={link.href}>
+               <AnimatedText title={link.title} />
+               </Link>
+              </div>
+            )
+          })}
           </div>
           <div className="text-neutral-900 text-2xl font-bold tracking-widest">
             <Link href="/">Balenciaga</Link>
@@ -225,7 +230,7 @@ const Navbar = () => {
                 exit="initial"
                 className="flex flex-col h-full justify-center font-lora items-center gap-4 "
               >
-                {mobileNavLinks.map((link, index) => {
+                {navLinks.map((link, index) => {
                   return (
                     <div className="overflow-hidden">
                       <motion.div key={index} variants={mobileLinkVars} className="uppercase text-2xl">
